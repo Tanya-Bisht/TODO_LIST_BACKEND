@@ -1,4 +1,4 @@
-const userList = require('../model/Users')
+const userList = require('../model/UsersTODO')
 
 
 
@@ -30,9 +30,10 @@ const patchList = async (req, res) => {
     const { title } = req.body
     try {
 
-        const item = await userList.findById(id)
-        item.Title = title
-        item.save()
+        const item = await userList.updateOne({_id:id},{Title:title})
+      
+        // item.Title = title
+        
         res.send("data updated")
 
     }
