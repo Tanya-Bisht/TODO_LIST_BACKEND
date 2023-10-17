@@ -1,13 +1,16 @@
 const express= require('express')
 const router=express.Router();
-const {addList,getList, patchList, deleteList}=require('../Controller/listController')
+const {addList,getList, patchList, deleteList,userSignup,userLogin,authorization}=require('../Controller/listController')
 
 
 
-router.post('/',addList)
-router.get('/',getList)
-router.patch('/:id',patchList)
-router.delete('/:id',deleteList)
+router.post('/',authorization,addList)
+router.get('/',authorization,getList)
+router.patch('/:id',authorization,patchList)
+router.delete('/:id',authorization,deleteList)
+router.post('/login',userLogin)
+router.post('/signup',userSignup)
+
 
 
 module.exports=router
